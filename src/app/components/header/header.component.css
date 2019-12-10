@@ -1,0 +1,26 @@
+.header {
+  background: rgb(66, 19, 153);
+  color: white;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.navlinksList {
+  list-style: none;
+}
+
+.navlink {
+  display: inline-block;
+  margin: 15px;
+  font-size: 20px;
+}
+.navlink a {
+  color: white;
+  text-decoration: none;
+}
+.navlink a:hover, .navlink a:active {
+  color: rgb(255, 217, 0);
+}

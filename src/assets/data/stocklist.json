@@ -1,0 +1,5 @@
+[
+  {"id": 1, "name": "Volkswagen", "wkn": 23578, "price": 30},
+  {"id": 2, "name": "Allianz", "wkn": 12345, "price": 40},
+  {"id": 3, "name": "BASF", "wkn": 567890, "price": 80}      
+]
