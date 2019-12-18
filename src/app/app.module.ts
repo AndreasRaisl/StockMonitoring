@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -15,6 +16,7 @@ import { StockDetailsComponent } from './components/stock-details/stock-details.
 import { RegisterComponent } from './components/register/register.component';
 
 import { fakeBackendProvider } from './helpers';
+import { ShowAllDaxComponent } from './components/show-all-dax/show-all-dax.component';
 
 
 @NgModule({
@@ -26,13 +28,15 @@ import { fakeBackendProvider } from './helpers';
     AddStockComponent,
     StockDetailsComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    ShowAllDaxComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     //ReactiveFormsModule
+    FormsModule
   ],
   providers: [
     fakeBackendProvider

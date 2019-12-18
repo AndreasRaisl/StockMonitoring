@@ -12,4 +12,7 @@ export class AddStockComponent implements OnInit {
   ngOnInit() {
   }
 
+   daxStocks = ['Adidas', 'Allianz', 'BASF', 'Bayer', 'Beiersdorf', 'BMW', 'Continental', 'Covestro', 'Daimler', 'Deutsche Bank', 'Deutsche Börse',              'Deutsche Post', 'Deutsche Telekom'];
+     
+
 }
