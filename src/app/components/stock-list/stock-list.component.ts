@@ -32,6 +32,10 @@ export class StockListComponent implements OnInit {
     this.stocklist = this.stocklist.filter(item => item !== stockToDelete);
   }  
 
+  checkOnline(stock) {
+    console.log("CheckOnline is called");
+  }
+
 }
 
 
