@@ -20,9 +20,10 @@ export class StockListComponent implements OnInit {
   }
 
   refreshStocklist() {
-    this.stockService.getAllStocks().subscribe(data => { this.stocklist = data; },
-      error => { this.errorMsg = error }
-      );
+    // this.stockService.getAllStocks().subscribe(data => { this.stocklist = data; },
+    //   error => { this.errorMsg = error }
+    //   );
+    this.stocklist = this.stockService.getAllStocks();
     console.log(this.stocklist);    
   }
 
