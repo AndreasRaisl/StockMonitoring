@@ -17,7 +17,8 @@ export class StockDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private stockService: StockService) { }
 
   ngOnInit() {
-    this. stockService.getAllStocks().subscribe(data => this.stocklist = data);
+    // this. stockService.getAllStocks().subscribe(data => this.stocklist = data);
+    this.stocklist = this.stockService.getAllStocks();
     console.log(this.stocklist);
     this.route.paramMap.subscribe(data => {
       let index =  parseInt(data.get('id'));
