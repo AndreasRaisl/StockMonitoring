@@ -14,3 +14,20 @@
   </form> -->
 
   <h1> The Login Page </h1>
+
+  <form (submit)="login($event)">
+    <input type="text" name="username" id="username">
+    <input type="password" name="password" id="password">
+    <button type="submit" class="btn btn-primary"> Login </button>
+  </form>
+
+  <!-- <form [formGroup]="loginForm" (ngSubmit)="processForm()">
+    <div class="form-group">
+      <label for="username"> Benutzername (Username) </label>
+      <input class="form-control" type="text" formControlName="username" id="username">
+    </div>
+    <div class="form-group">
+      <label for="password"> Passwort </label>
+      <input class="form-control" type="text" formControlName="password" id="password">
+    </div>
+  </form> -->

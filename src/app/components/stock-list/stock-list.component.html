@@ -1,12 +1,13 @@
 <h2> Liste aller Ihrer Aktien </h2>
   <div class="stocklist">
   <div *ngFor="let stock of stocklist; index as id" class="stockItem">
-    <span> {{ stock.name }} </span>
+    <span> {{ stock.name | uppercase }} </span>
     <span> {{ stock.wkn }} </span> 
-    <span> {{ stock.price }} </span>
+    <span> {{ stock.price | currency:'EUR':true:'1.2' }} </span>    
     <button [routerLink]="['/stocks', id]" class="btn"> show Details </button>
     <button (click)="checkOnline(stock)" class="btn"> Check Online </button>
     <button class="deleteButton" (click)="deleteStock(stock)"> X </button>    
   </div>
   </div>
-  <h2> {{ stocklist[0].id }} </h2>
+  <button (click)="refreshStocklist()"> Kurse aktualisieren </button>
+  

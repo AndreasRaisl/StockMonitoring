@@ -16,6 +16,10 @@ export class StockListComponent implements OnInit {
 
   ngOnInit() {
     // this.stocklist = this.stockService.getAllStocks();
+    this.refreshStocklist();  
+  }
+
+  refreshStocklist() {
     this.stockService.getAllStocks().subscribe(data => { this.stocklist = data; },
       error => { this.errorMsg = error }
       );
@@ -25,6 +29,8 @@ export class StockListComponent implements OnInit {
   deleteStock(stockToDelete) {
     this.stockService.deleteFromPortfolio(stockToDelete);
     this.stocklist = this.stocklist.filter(item => item !== stockToDelete);
-  }
+  }  
 
 }
+
+

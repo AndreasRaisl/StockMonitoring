@@ -1,0 +1,17 @@
+input {
+  border: 1px solid rgb(66, 19, 153);
+}
+
+.addStockForm {
+  width: 800px;
+  max-width: 90%;
+  margin: auto;
+  
+}
+
+.form-control {
+  width: 100%;
+} 
+.form-control input, .form-control label {
+  display: block;
+}
