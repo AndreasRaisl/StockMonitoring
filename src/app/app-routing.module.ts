@@ -13,6 +13,7 @@ import { ShowAllDaxComponent } from './components/show-all-dax/show-all-dax.comp
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
+  {path: 'home', component: HomeComponent},
   {path: 'showall', component: StockListComponent},
   {path: 'stocks/:id', component: StockDetailsComponent},
   {path: 'add', component: AddStockComponent},

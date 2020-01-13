@@ -24,8 +24,7 @@
 
   <div class="container">
     <h1> Login </h1>
-    <form #formData="ngForm">
-      {{ formData.value | json }}
+    <form #formData="ngForm" (ngSubmit)="onSubmit()">      
       <div class="form-group">
         <label for="username"> Benutzername </label>
         <input class="form-control" type="text" name="username" id="username" ngModel>

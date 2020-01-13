@@ -15,6 +15,12 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
   error: string;
 
+  username: string;
+  password: string;
+
+
+
+
   constructor(private authenticationService: AuthenticationService, /*private formBuilder: FormBuilder */) { }
 
   ngOnInit() {
@@ -33,7 +39,15 @@ export class LoginComponent implements OnInit {
     let username = event.target.querySelector('#username').value;
     let password = event.target.querySelector('#password').value;
     this.authenticationService.login(username, password);
-
   }
+
+  // onSubmit() {
+    
+  //   this.authenticationService.login(this.username, this.password).subscribe((data) => {
+  //     console.log('Logged in user');
+  //     console.log(data);
+  //   });
+
+  // }
 
 }

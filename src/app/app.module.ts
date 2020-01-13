@@ -14,9 +14,12 @@ import { StockListComponent } from './components/stock-list/stock-list.component
 import { AddStockComponent } from './components/add-stock/add-stock.component';
 import { StockDetailsComponent } from './components/stock-details/stock-details.component';
 import { RegisterComponent } from './components/register/register.component';
-
-import { fakeBackendProvider } from './helpers';
 import { ShowAllDaxComponent } from './components/show-all-dax/show-all-dax.component';
+
+import { fakeBackendProvider } from './helpers/fakeBackend';
+
+import { ConfirmEqualValidatorDirective } from './helpers/confirm-equal-validator.directive'
+
 
 
 @NgModule({
@@ -29,14 +32,16 @@ import { ShowAllDaxComponent } from './components/show-all-dax/show-all-dax.comp
     StockDetailsComponent,
     RegisterComponent,
     HomeComponent,
-    ShowAllDaxComponent
+    ShowAllDaxComponent,
+    ConfirmEqualValidatorDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     //ReactiveFormsModule
-    FormsModule
+    FormsModule,
+    // ConfirmEqualValidatorDirective
   ],
   providers: [
     fakeBackendProvider

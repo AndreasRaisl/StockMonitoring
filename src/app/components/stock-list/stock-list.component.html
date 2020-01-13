@@ -1,13 +1,171 @@
-<h2> Liste aller Ihrer Aktien </h2>
-  <div class="stocklist">
-  <div *ngFor="let stock of stocklist; index as id" class="stockItem">
-    <span> {{ stock.name | uppercase }} </span>
-    <span> {{ stock.wkn }} </span> 
-    <span> {{ stock.price | currency:'EUR':true:'1.2' }} </span>    
-    <button [routerLink]="['/stocks', id]" class="btn"> show Details </button>
-    <button (click)="checkOnline(stock)" class="btn"> Check Online </button>
-    <button class="deleteButton" (click)="deleteStock(stock)"> X </button>    
+
+  
+  <!-- <div class="stocklist">
+    <div *ngFor="let stock of stocklist; index as id" class="stockItem">
+      <span> {{ stock.name | uppercase }} </span>
+      <span> {{ stock.wkn }} </span> 
+      <span> {{ stock.price | currency:'EUR':true:'1.2' }} </span>    
+      <button [routerLink]="['/stocks', id]" class="mybtn"> show Details </button>
+
+      <button (click)="showDetails(stock)" class="mybtn"> Show Details </button>
+
+      <button (click)="checkOnline(stock)" class="mybtn"> Check Online </button>
+      <button class="deleteButton" (click)="deleteStock(stock)"> X </button>    
+    </div>
+    <button class="btn btn-primary" (click)="refreshStocklist()"> Kurse aktualisieren </button>
+  </div>  
+  <br> <br> <br>
+  <div class="container myContainer stocklist2">
+    <h2> {{stocklist[0].name}} </h2>
+    <div class="row">
+      <div class="col-sm-4">
+        <span> {{ stocklist[0].name | uppercase }} </span>    
+      </div>
+      <div class="col-sm-4">
+        <span> {{ stocklist[0].wkn }} </span> 
+      </div>
+      <div class="col-sm-4">
+        <span> {{ stocklist[0].price | currency:'EUR':true:'1.2' }} </span>    
+      </div>
+    </div>
   </div>
+
+  <br> <br> <br> -->
+
+  <!-- <div class="container myContainer stocklist">
+    <div class="row stockItem">
+      <div class="col-md-3 xx stockItemField"> <span>{{stocklist[0].name | uppercase}} </span> </div>
+      <div class="col-md-3 xx stockItemField"> <span>{{ stocklist[0].wkn }}  </span> </div>
+      <div class="col-md-3 xx stockItemField"> <span> {{ stocklist[0].price | currency:'EUR':true:'1.2' }} </span> </div>
+      <div class="col-md-2 xx"> </div>
+      <div class="col-md-1 xx"> </div>
+    </div>
   </div>
-  <button (click)="refreshStocklist()"> Kurse aktualisieren </button>
+
+  <br> <br> <br> -->  
+
+  <div *ngIf="!detailsView" class="container">
+    <h2> Liste aller Ihrer Aktien </h2>
+    <div class="row">
+      <div *ngFor="let stock of stocklist; index as id" class="col-md-6 col-lg-3">
+        <div class="card">          
+         <div class="card-body">           
+           <h3 class="card-title"> {{ stock.name }} </h3>
+           <p> WKN: {{ stock.wkn }}  </p>
+           <p> Kurs: {{ stock.price | currency:'EUR':true:'1.2' }} </p>
+           <!-- <a [routerLink]="['/stocks', id]"  class="btn btn-primary"> Details 1  </a> --> 
+           <button (click)="showDetails(stock)" class="btn btn-primary"> Details  </button>
+           <button (click)="updatePrice(stock, id)" class="btn btn-primary"> Kursupdate  </button>
+           <button (click)="deleteStock(stock)" class="btn btn-danger"> Löschen  </button>
+           <br>           
+          </div>           
+        </div>        
+      </div>
+    </div>
+  </div>
+
+
+  <!-- <div class="grid">
+    <div *ngFor="let stock of stocklist; index as id" class="col-md-6 col-lg-3">
+      <article class="card product-item">
+        <header class="card__header">
+          <h1 class="product__title"> Volkswagen </h1>
+        </header>        
+        <div class="cardImage">
+          <img src="xxx" alt='alternative text'>
+        </div>
+        <div class="card__content">
+          <h2 class="product__price">  150 € </h2>
+          <p class="product__description"> <%= product.description %> </p>
+        </div>
+        <div class="card__actions">
+          <button class="btn"> Add to cart </button>
+        </div>
+      </article> 
+    </div>        
+  </div>  -->
+
+      <!-- <div class="col-md-6 col-lg-3">
+        <div class="card">          
+          <div class="card-body">             
+           <h3 class="card-title"> Volkswagen </h3>
+           <p> WKN: 123456  </p>
+           <p> Price: 199 $ </p>
+           <p> Branche: Automobil </p>
+           <p> Index: DAX </p>
+           <a href="#" class="card-link">Card link</a>
+           <a href="#" class="card-link">Another link</a>            
+           <a href="#" class="btn btn-danger"> Löschen  </a>                 
+          </div>           
+        </div>        
+      </div> -->
+      <!-- <div class="col-md-6 col-lg-3">
+        <div class="card">          
+         <div class="card-body">           
+           <h3 class="card-title text-center"> Volkswagen </h3>
+           <ul class="list-group list-group-flush">
+            <li class="list-group-item"> WKN: 123456</li>
+            <li class="list-group-item"> Price: 199 $</li>
+            <li class="list-group-item"> Index: DAX</li>
+            <li class="list-group-item"> Branche: Automobil</li>
+           </ul>
+          </div>           
+        </div>        
+      </div> -->
+      <!-- <div class="col-md-6 col-lg-3">
+        <div class="card"> 
+         <h3 class="card-header">
+           Volkswagen 
+         </h3>         
+         <div class="card-body">  
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"> WKN: 123456</li>
+            <li class="list-group-item"> Price: 199 $</li>
+            <li class="list-group-item"> Index: DAX</li>
+            <li class="list-group-item"> Branche: Automobil</li>
+           </ul>        
+           
+           
+          </div>           
+        </div>        
+      </div> -->     
+
+      <br> <br> <br>  
+
+      <app-stock-details *ngIf="selectedStockForDetails  && detailsView" [selectedStock]="selectedStockForDetails"
+                          (goBackEvent)="onGoBackEvent($event)"> </app-stock-details>
+        
+      <!-- <div class="col-md-6 col-lg-3">
+        <div class="card">
+         <div class="card-block">
+           <h3> Content of card </h3>
+         </div>
+        </div>        
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card">
+         <div class="card-block">
+           <h3> Content of card </h3>
+         </div>
+        </div>        
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card">
+         <div class="card-block">
+           <h3> Content of card </h3>
+         </div>
+        </div>        
+      </div> -->
+
+      <button class="btn btn-primary text-center" (click)="refreshStocklist()"> Kurse aktualisieren </button>
+      
+      
+   
+
+
+
+  <div class="fillUp">
+
+  </div>
+  
   

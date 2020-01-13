@@ -8,33 +8,41 @@
   
 </form> -->
 
-<div class="container-fluid">
+<div class="container">
   <h1> Aktie Ihrem Monitoring hinzufügen </h1>
   
-    <form action="http://localhost:3000/add-stock" method="POST" #formData="ngForm">|
-      {{ formData.value | json }}
+    <form #formData="ngForm" novalidate (ngSubmit)="onSubmit()" class="well">
+
       <div class="form-group">
-        <label for="stockName"> Name der Aktie </label>
-        <input class="form-control" type="text" name="stockName" id="stockName" ngModel>
-      </div>
-      <div class="form-group">
-        <label for="wkn"> wkn </label>
-        <input class="form-control" type="text" name="wkn" id="wkn" ngModel>
-      </div> 
-      
-      <div class="form-group">
-        <select class="custom-select" name="selectedStock" ngModel>
-          <option> Dax Aktie auswählen </option>
+        <select required #selectedStock="ngModel" class="custom-select" [class.is-invalid]="selectedStock.invalid && selectedStock.touched" name="selectedStock" ngModel (blur)="validateSelection(selectedStock.value)" (change)="validateSelection(selectedStock.value)">
+          <option value=""> Dax Aktie auswählen </option>
           <option *ngFor="let stock of daxStocks"> {{ stock }} </option>
         </select>
+        <small class="text-danger" [class.d-none]="selectedStock.valid || selectedStock.untouched"> Bitte eine Aktie auswählen </small>
       </div>
+
+      <!-- <div class="form-group">
+        <label for="name"> Name der Aktie </label>
+        <input #name="ngModel" class="form-control" [class.is-invalid]="name.invalid  && name.touched" required type="text" name="name" id="name"
+         [(ngModel)]="stockToAdd.name">
+      </div> -->
+
+      <div class="form-group">
+        <label for="wkn"> wkn </label>
+        <input #wkn="ngModel" class="form-control" [class.is-invalid]="wkn.invalid && wkn.touched" required type="text" name="wkn" id="wkn" [(ngModel)]="stockToAdd.wkn">
+      </div>       
 
       <div class="form-check">
         <input class="form-check-input"  name="wantAlert" type="checkbox" ngModel>
         <label class="form-check-label"> Email Benachrichtigung erhalten bei Kursänderung von mehr als 10% </label>
       </div>
+      <br> <br>
 
-      <button type="submit" class="btn btn-primary"> Aktie hinzufügen </button>
+      <button type="submit" class="btn btn-primary" [disabled]="formData.invalid"> Aktie hinzufügen </button>
             
     </form>
+</div>
+
+<div class="container" *ngIf="showSuccessMessage">
+  <h2> Aktie erfolgreich hinzugefügt </h2>
 </div>

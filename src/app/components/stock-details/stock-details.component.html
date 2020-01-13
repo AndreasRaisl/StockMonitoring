@@ -1,6 +1,23 @@
-<div class="myContainer">
-  <h1> Detailansicht für Aktie mit ID {{ stocklist[id].id }} </h1>
-  <h3> Name: {{ stocklist[id].name }} </h3>
-  <h3> WKN: {{ stocklist[id].wkn }} </h3>
-  <h3> aktueller Kurs: {{ stocklist[id].price }} </h3>
+<div class="container ">
+  <div class="row">
+    <div class="col-sm-7 detailsView">
+      <!-- <h1> Detailansicht für Aktie  {{ stocklist[id].name }} </h1>
+      <h3> Name: {{ stocklist[id].name }} </h3>
+      <h3> WKN: {{ stocklist[id].wkn }} </h3>
+      <h3> aktueller Kurs: {{ stocklist[id].price }} </h3> -->
+      <h1> Detailansicht für Aktie  {{ selectedStock.name }} </h1>
+      <h3> Name: {{ selectedStock.name }} </h3>
+      <h3> WKN: {{ selectedStock.wkn }} </h3>
+      <h3> aktueller Kurs: {{ selectedStock.price }} </h3>
+      <button class="btn btnGoBack" (click)="goBackToList()"> Zurück </button>
+    </div>
+    <div class="col-sm-2"></div>
+    <div class="col-sm-3">
+      <h2> Meine Aktien  </h2>
+      <ul>
+        <li *ngFor="let stock of stocklist"> <a (click)="showDetails(stock)"> {{ stock.name }} </a></li>
+      </ul>
+    </div>
+  </div>
+  
 </div>

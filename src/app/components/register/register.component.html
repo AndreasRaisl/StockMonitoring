@@ -1,33 +1,50 @@
 
 <div class="container">
   <h1> Registrierung für Ihr virtuelles Aktien-Portfolio </h1>
-    <form #formData="ngForm">
-      {{ formData.value | json}}
+    <form #formData="ngForm" novalidate (ngSubmit)="onSubmit()">     
       <div class="form-group">
         <label for="firstName"> Vorname </label>
-        <input class="form-control" type="text" name="firstName" id="firstName" ngModel>
-      </div>
+        <input #firstName="ngModel" required class="form-control" [class.is-invalid]="firstName.invalid && firstName.touched" type="text"             name="firstName" id="firstName" [(ngModel)]="userToRegister.firstName">
+        <small class="text-danger" [class.d-none]="firstName.valid || firstName.untouched"> Der Vorname ist ein Pflichtfeld </small>
+      </div>      
       <div class="form-group">
         <label for="lastName"> Nachname </label>
-        <input class="form-control" type="text" name="lastName" id="lastName" ngModel>
+        <input class="form-control" type="text" name="lastName" id="lastName" [(ngModel)]="userToRegister.lastName">
       </div>   
       <div class="form-group">
         <label for="email"> Email </label>
-        <input class="form-control" type="email" name="email" id="email" ngModel>
+        <input class="form-control" type="email" name="email" id="email" [(ngModel)]="userToRegister.email">
       </div>   
       <div class="form-group">
         <label for="phone>"> Telefon </label>
-        <input class="form-control" type="tel" name="phone" id="phone" ngModel>
+        <input class="form-control" type="tel" name="phone" id="phone" [(ngModel)]="userToRegister.phone">
       </div>
       <div class="form-group">
         <label for="username"> Benutzername </label>
-        <input class="form-control" type="text" name="username" id="username" ngModel>
+        <input #username="ngModel" class="form-control" [class.is-invalid]="username.invalid && username.touched" required type="text" name="username" id="username" [(ngModel)]="userToRegister.username">
+        <small [class.d-none]="username.valid || username.untouched"> Der Benutzername ist ein Pflichtfeld </small>
       </div>   
       <div class="form-group">
-        <label for="password"> Passwort </label>
-        <input class="form-control" type="text" name="password" id="password" ngModel>
-      </div>     
+        <label for="password"> Passwort (min. 8 Zeichen) </label>
+        <input #password="ngModel" pattern=".{8,}" class="form-control" [class.is-invalid]="password.invalid && password.touched" required type="password" name="password" id="password" [(ngModel)]="userToRegister.password">
+        <small class="text-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+         Passwort muss mindestens 8 Zeichen lang sein  </small>
+      </div>      
+     
+      <div class="form-group">
+        <label for="password2"> Passwort noch einmal </label>
+        <input #password2="ngModel" class="form-control" [class.is-invalid]="password2.invalid && password2.touched" required type="password" name="password2" id="password2" compare="password" [(ngModel)]="userToRegister.password2">    
+        <div class="text-danger" *ngIf="password2.invalid && (password2.dirty || password2.touched)">
+          <small *ngIf="password2.errors['required']"> Passwort muss zwingend wiederholt werden </small>
+          <small *ngIf="password2.errors['compare']"> Die beiden Passwörter sind unterschiedlich  </small>
+        </div>
+      </div>
+      <!-- <small class="text-danger" [class.d-none]="password2.valid || password2.untouched"> Passwort Wiederholung ist Pflicht </small>
+      <small class="text-danger" *ngIf="password2.touched && password2.errors?.notEqual"> Die beiden Passwörter stimmen nicht überein </small>        -->
       
-      <button type="submit" class="btn btn-primary"> Registrieren </button>
+      <button type="submit" class="btn btn-primary" [disabled]="formData.invalid"> Registrieren </button>
     </form>
+    <br> <br> 
+
+    <h3> Form Status: {{ formData.status }} </h3>
 </div>
