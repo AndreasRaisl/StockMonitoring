@@ -10,13 +10,13 @@
 
 <div class="container">
   <h1> Aktie Ihrem Monitoring hinzufügen </h1>
-    
+  
     <form #formData="ngForm" novalidate (ngSubmit)="onSubmit()" class="well">
-
+      <label for="selectedStock"> Dax Aktie wählen</label>
       <div class="form-group">
         <select required #selectedStock="ngModel" class="custom-select" [class.is-invalid]="selectedStock.invalid && selectedStock.touched" 
-          name="selectedStock" ngModel  > 
-          <option value=""> Dax Aktie auswählen </option>
+          name="selectedStock" [(ngModel)]="stockToAdd.selectedStock"  > 
+          <!-- <option value=""> Dax Aktie auswählen </option> -->
           <option *ngFor="let stock of daxStocks"> {{ stock }} </option>
         </select>
         <small class="text-danger" [class.d-none]="selectedStock.valid || selectedStock.untouched"> Bitte eine Aktie auswählen </small>
@@ -26,8 +26,9 @@
         <label for="name"> Name der Aktie </label>
         <input #name="ngModel" class="form-control" [class.is-invalid]="name.invalid  && name.touched" required type="text" name="name" id="name"
          [(ngModel)]="stockToAdd.name">
-      </div>
-    (blur)="validateSelection(selectedStock.value)" (change)="validateSelection(selectedStock.value)"-->
+      </div> -->
+
+    <!-- (blur)="validateSelection(selectedStock.value)" (change)="validateSelection(selectedStock.value)"-->
 
       <div class="form-group">
         <label for="wkn"> wkn </label>
