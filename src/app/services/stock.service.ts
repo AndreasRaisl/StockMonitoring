@@ -11,10 +11,18 @@ import { catchError } from 'rxjs/operators';
 export class StockService {
 
   // url: string = '../assets/data/stocklist.json'; //`https://my-json-server.typicode.com/AndreasRaisl/fakeDataServer/stocks/`;
-  urlGetStocklist: string = 'http://localhost:3000/api/stocks';  
-  urlPostAddStock: string = 'http://localhost:3000/api/add-stock';
-  urlUpdatePrice: string = 'http://localhost:3000/api/update-price';
-  urlDeleteStock: string = 'http://localhost:3000/api/delete-stock/';
+  // urlGetStocklist: string = 'http://localhost:3000/api/stocks';  
+  // urlPostAddStock: string = 'http://localhost:3000/api/add-stock';
+  // urlUpdatePrice: string = 'http://localhost:3000/api/update-price';
+  // urlDeleteStock: string = 'http://localhost:3000/api/delete-stock/';
+
+  urlGetStocklist: string = 'https://stockmonitoring-server.herokuapp.com/api/stocks';  
+  urlPostAddStock: string = 'https://stockmonitoring-server.herokuapp.com/api/add-stock';
+  urlUpdatePrice: string = 'https://stockmonitoring-server.herokuapp.com/api/update-price';
+  urlDeleteStock: string = 'https://stockmonitoring-server.herokuapp.com/api/delete-stock/';
+
+
+
 
   // myDummyStocks = [
   //   {id: 1, name: 'Volkswagen', wkn: 23578, price: 30},
