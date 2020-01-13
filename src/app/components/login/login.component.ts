@@ -41,13 +41,13 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(username, password);
   }
 
-  // onSubmit() {
+  onSubmit() {
     
-  //   this.authenticationService.login(this.username, this.password).subscribe((data) => {
-  //     console.log('Logged in user');
-  //     console.log(data);
-  //   });
+    this.authenticationService.login(this.username, this.password).subscribe((data) => {
+      console.log('Logged in user');
+      console.log(data);
+    });
 
-  // }
+  }
 
 }

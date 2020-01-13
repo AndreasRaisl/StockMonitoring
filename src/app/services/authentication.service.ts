@@ -25,16 +25,14 @@ export class AuthenticationService {
    }
 
   login(username, password) {
-    return this.httpClient.post<any>(`${this.urlForLogin}`, {username: username, password: password})
-      .subscribe(data => {
-         console.log('This is the data from the server:', data);
-         localStorage.setItem('access_token', data.token);
-      });
+    return this.httpClient.post<any>(`${this.urlForLogin}`, {username: username, password: password});     
+         //localStorage.setItem('access_token', data.token);
+  }
 
       // .pipe(map(user => {
 
       // }))
-  }
+  
 
   getAccessToken() {
     return localStorage.getItem('access_token');
