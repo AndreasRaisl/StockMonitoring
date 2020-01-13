@@ -15,8 +15,12 @@ export class AuthenticationService {
   public currentUser: Observable<any>;
   user;
 
-  urlForLogin: string = 'http://localhost:3000/users/authenticate';
-  urlForRegister: string = 'http://localhost:3000/users/register';
+  // urlForLogin: string = 'http://localhost:3000/users/authenticate';
+  // urlForRegister: string = 'http://localhost:3000/users/register';
+
+  urlForLogin: string = 'https://stockmonitoring-server.herokuapp.com/users/authenticate';
+  urlForRegister: string = 'https://stockmonitoring-server.herokuapp.com/users/register';
+
 
   constructor(private httpClient: HttpClient, private router: Router) {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
